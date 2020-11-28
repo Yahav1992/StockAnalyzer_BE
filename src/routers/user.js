@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken')
 const config = require('config');
 const auth = require('../middleware/auth');
 
-router.post('/users', auth,[
+router.post('/users', auth, [
     check('name', 'Name is required').not().isEmpty(),
     check('email', "Please type a valid email").isEmail(),
     check('password', "Please enter a password with 4 or more characters").isLength({min: 4})
@@ -55,7 +55,7 @@ router.post('/users', auth,[
     }
 })
 
-router.get("/users", async (req, res) => {
+router.get("/users", auth, async (req, res) => {
     const _name = req.query.name;
     const _email = req.query.email;
 
@@ -72,7 +72,7 @@ router.get("/users", async (req, res) => {
     }
 })
 
-router.get("/users/:id", async (req, res) => {
+router.get("/users/:id", auth, async (req, res) => {
     const _id = req.params.id;
 
     try {
