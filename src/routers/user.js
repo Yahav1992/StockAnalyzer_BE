@@ -6,8 +6,8 @@ const gravatar = require('gravatar')
 const {check} = require('express-validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const config = require('config');
 const auth = require('../middleware/auth');
+require("dotenv").config();
 
 router.post('/users', auth, [
     check('name', 'Name is required').not().isEmpty(),
@@ -43,7 +43,7 @@ router.post('/users', auth, [
         }
         jwt.sign(
             payload,
-            config.get('jwtSecret'),
+            process.env.JWT_SECRET,
             {expiresIn: 3600}, // expires in 1 hour. optional.
             (err, token) => {
                 if (err) throw err;

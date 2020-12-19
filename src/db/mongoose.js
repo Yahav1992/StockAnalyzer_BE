@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
-const config = require('config');
-const connectionURL = config.get('mongoURI');
-const databaseName = config.get('dbName');
+
+require("dotenv").config();
+
+const connectionURL = process.env.MONGO_URI;
+const databaseName = process.env.DB_NAME;
 
 const connectDB = async () => {
     try {
@@ -12,7 +14,7 @@ const connectDB = async () => {
         })
         console.log('connected to mongodb')
     } catch (e) {
-        console.log(e.message);
+        console.log(e.message, process.env.MONGO_URI, process.env.DB_NAME, process.env);
         process.exit(1);
     }
 }

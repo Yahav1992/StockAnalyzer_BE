@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const config = require('config');
+require("dotenv").config();
 
 // parsing requests to server
 module.exports = (req, res, next) => {
@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
 
     //verify token
     try {
-        const decoded = jwt.verify(token, config.get('jwtSecret'));
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         // setting the user object as given from jwt token. to be used inside server.
         req.user = decoded.user;
