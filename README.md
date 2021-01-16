@@ -17,4 +17,4 @@ To be added:
 2) `mongoose` - Mongoose provides a straight-forward, schema-based solution to model application data. https://mongoosejs.com/
 3) `jsonwebtoken` - jwt library to create and verify jwt tokens.  https://github.com/auth0/node-jsonwebtoken
 4) `bcryptjs` - encrypt\decrypt password library using hashing with salt.  https://www.npmjs.com/package/bcryptjs
-5) `config` - organizes hierarchical configurations for app deployments. https://www.npmjs.com/package/config
+5) `.env` - organizes hierarchical configurations for app deployments. https://www.npmjs.com/package/config
